@@ -1,4 +1,9 @@
 -- =========================
+-- user_roles enum
+-- =========================
+CREATE TYPE user_role AS ENUM ('user', 'admin');
+
+-- =========================
 -- users table
 -- =========================
 CREATE TABLE users (
@@ -7,6 +12,7 @@ CREATE TABLE users (
     last_name TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
+    role user_role NOT NULL DEFAULT 'user',
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

@@ -1,4 +1,4 @@
-import { prisma } from '@/prisma/client'
+import { prisma } from '@/prisma/client';
 
 /**
  * Checks if a user with the specified email exists in the users table.
@@ -9,6 +9,6 @@ export async function userExistsByEmail(email: string): Promise<boolean> {
   const user = await prisma.users.findUnique({
     where: { email },
     select: { id: true },
-  })
-  return !!user
+  });
+  return !!user;
 }

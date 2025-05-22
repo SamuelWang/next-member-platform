@@ -1,10 +1,9 @@
 import { prisma } from '@/prisma/client';
-import { hashPassword } from '@/services/auth/password';
 
 /**
  * Creates a new user and associated auth_provider for email/password login.
  * @param email - The user's email address
- * @param password - The user's plain text password
+ * @param hashedPassword - The user's hashed password
  * @param firstName - The user's first name
  * @param lastName - The user's last name
  * @param role - The user's role, either 'user' or 'admin'. Defaults to 'user'.
@@ -12,18 +11,17 @@ import { hashPassword } from '@/services/auth/password';
  */
 export async function createUserWithEmail({
   email,
-  password,
+  hashedPassword,
   firstName,
   lastName,
   role = 'user',
 }: {
   email: string;
-  password: string;
+  hashedPassword: string;
   firstName: string;
   lastName: string;
   role?: 'user' | 'admin';
 }) {
-  const hashedPassword = await hashPassword(password);
   return prisma.$transaction(async (tx) => {
     const user = await tx.users.create({
       data: {

@@ -1,5 +1,6 @@
 import { logAppEvent } from '@/dataAccess/logging';
 import { LogLevel } from '@/dataAccess/models/logging';
+import { LogCategory } from '@/models/logging';
 
 /**
  * Service to log application events with metadata serialization.
@@ -19,7 +20,7 @@ export async function logEventWithMetadata({
 }: {
   userId?: string;
   level: LogLevel;
-  category: string;
+  category: LogCategory;
   message: string;
   metadata?: Record<string, unknown>;
 }) {

@@ -1,6 +1,6 @@
 import { createUserWithEmail, userExistsByEmail } from '@/dataAccess/auth';
+import { UserDTO } from '@/models/auth';
 import { LogCategory } from '@/models/logging';
-import { UserDTO } from '@/models/user.dto';
 import { logEventWithMetadata } from '@/services/auth/logService';
 import { hashPassword } from '@/services/auth/passwordService';
 

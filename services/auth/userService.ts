@@ -1,7 +1,6 @@
-import { createUserWithEmail } from '@/dataAccess/auth/createUserWithEmail';
-import { hashPassword } from '@/services/auth/password';
+import { createUserWithEmail, userExistsByEmail } from '@/dataAccess/auth';
 import { UserDTO } from '@/models/user.dto';
-import { userExistsByEmail } from '@/dataAccess/auth/userExists';
+import { hashPassword } from '@/services/auth/passwordService';
 
 /**
  * Service for registering a new user with email and password.

@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "prepare": "husky",
     "prisma:pull": "prisma db pull",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "prisma generate",
+    "prisma:seed": "prisma db seed"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
@@ -39,9 +40,14 @@
     "prettier": "3.5.3",
     "prisma": "^6.6.0",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5"
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} -r tsconfig-paths/register prisma/seed.ts"
   }
 }
